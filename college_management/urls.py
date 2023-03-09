@@ -23,13 +23,14 @@ from student.views import EnrollCourseView, DropCourseView
 from users import views as user_views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 from rest_framework.routers import DefaultRouter
-from admin_user import views as admin_views
+from faculty.views import GradeStudentView
 from admin_user.views import AssignCourseToFacultyView
 from faculty.views import ShowAssignedCoursesView
 
 router = DefaultRouter()
 router.register('course', courses_views.CourseModelViewSet, basename='course')
 router.register('user', user_views.UserModelViewSet, basename='user')
+router.register('grade', GradeStudentView, basename='grade')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
@@ -45,5 +46,5 @@ urlpatterns = [
          name='assign_course-detail'),
     path('show-course/', ShowAssignedCoursesView.as_view(), name='show-course'),
     path('enroll-course/', EnrollCourseView.as_view(), name='enroll-course'),
-    path('drop-course/', DropCourseView.as_view(), name='drop-course')
+    path('drop-course/', DropCourseView.as_view(), name='drop-course'),
 ]
