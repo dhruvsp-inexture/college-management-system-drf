@@ -1,6 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from admin_user.models import FacultyCourseMapping
 from admin_user.serializers import FacultyCourseMappingSerializer
@@ -25,7 +26,7 @@ class ShowAssignedCoursesView(generics.ListAPIView):
         return assigned_courses
 
 
-class GradeStudentView(viewsets.ModelViewSet):
+class MyStudentGradeView(generics.ListAPIView):
     student_mappings = StudentCourseMapping.objects.all()
     serializer_class = GradeStudentSerializer
     authentication_classes = [JWTAuthentication]
@@ -36,7 +37,28 @@ class GradeStudentView(viewsets.ModelViewSet):
         students_to_grade = self.student_mappings.filter(course__in=faculty_mappings.values('course'))
         return students_to_grade
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context.update({'students_to_grade': self.get_queryset()})
-        return context
+
+class GradeStudentView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [FacultyOnly]
+
+    def put(self, request):
+        try:
+            student_to_grade = StudentCourseMapping.objects.get(student=request.data.get('student'),
+                                                                   course=request.data.get('course'))
+            serializer = GradeStudentSerializer(instance=student_to_grade, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                data = {"message": "Grade Updated Successfully", "status_code": status.HTTP_204_NO_CONTENT}
+                return Response(data=data, status=status.HTTP_204_NO_CONTENT)
+            else:
+                data = {"error": serializer.errors, "status_code": 400}
+                return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+        except StudentCourseMapping.DoesNotExist:
+            data = {"error": "Data not found", "status_code": 404}
+            return Response(data=data, status=status.HTTP_404_NOT_FOUND)
+        except ValueError:
+            data = {"error": "Bad Request", "status_code": 400}
+            return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+
+
