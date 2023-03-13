@@ -62,5 +62,12 @@ class TestSetUp(APITestCase):
         response = self.client.post(reverse('course-list'), self.course_data)
         return response
 
+    def add_faculty(self):
+        self.get_logged_in_admin()
+        self.user_data['email'] = 'faculty@gmail.com'
+        self.user_data['user_type'] = 'F'
+        response = self.client.post(self.register_url, self.user_data)
+        return response
+
     def tearDown(self):
         return super().tearDown()
