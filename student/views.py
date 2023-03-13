@@ -33,7 +33,10 @@ class EnrollCourseView(generics.ListCreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            data = {"error": "Course not found.", "status_code": 404}
+            if serializer.errors.get('course'):
+                data = {"error": "Course not found.", "status_code": 404}
+            else:
+                data = {"error": "You have already enrolled in this course.", "status_code": 404}
             return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
 
