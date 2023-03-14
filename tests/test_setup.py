@@ -54,6 +54,15 @@ class TestSetUp(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + login_response.data.get('access'))
         return login_response
 
+    def get_logged_in_faculty(self):
+        """
+        Get logged in student
+        """
+        self.add_faculty()
+        login_response = self.client.post(self.login_url, {"email": "faculty@gmail.com", "password": "pass@123"})
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + login_response.data.get('access'))
+        return login_response
+
     def add_course(self):
         """
         add a course
