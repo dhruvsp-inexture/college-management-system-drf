@@ -46,7 +46,7 @@ class GradeStudentView(APIView):
         try:
             student_to_grade = StudentCourseMapping.objects.get(student=request.data.get('student'),
                                                                    course=request.data.get('course'))
-            serializer = GradeStudentSerializer(instance=student_to_grade, data=request.data)
+            serializer = GradeStudentSerializer(instance=student_to_grade, data=request.data, context={'request': request})
             if serializer.is_valid():
                 serializer.save()
                 data = {"message": "Grade Updated Successfully", "status_code": status.HTTP_204_NO_CONTENT}

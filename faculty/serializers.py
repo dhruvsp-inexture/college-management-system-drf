@@ -24,6 +24,8 @@ class GradeStudentSerializer(serializers.ModelSerializer):
         if course_obj.end_date > date.today():
             raise serializers.ValidationError(
                 f"Course has not ended yet. It will end on {course_obj.end_date}. Grade can only be assigned after course has ended.")
+        if not FacultyCourseMapping.objects.filter(faculty=self.context['request'].user.id, course=request.get('course')).exists():
+            raise serializers.ValidationError("You are not assigned this course so you cannot grade this student.")
         return request
 
     def validate_grade(self, value):
