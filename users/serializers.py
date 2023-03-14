@@ -1,6 +1,8 @@
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from rest_framework.validators import UniqueValidator
+
 from .models import MyUser
 
 
@@ -13,6 +15,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
+    email = serializers.EmailField(validators=[UniqueValidator(queryset=MyUser.objects.all(), message="User with this email address already exists.")])
 
     def create(self, validated_data):
         user = MyUser.objects.create(**validated_data)
@@ -28,6 +31,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'user_type': {'read_only': True}
         }
+    email = serializers.EmailField(validators=[UniqueValidator(queryset=MyUser.objects.all(), message="User with this email address already exists.")])
 
 
 class ChangePasswordSerializer(serializers.Serializer):

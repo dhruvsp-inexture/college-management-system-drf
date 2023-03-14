@@ -99,7 +99,7 @@ class TestUsers(TestSetUp):
         self.get_logged_in_admin()
         self.user_data['email'] = "admin@example.com"
         response = self.client.post(self.register_url, self.user_data)
-        self.assertEqual(str(response.data['email'][0]), 'my user with this email address already exists.')
+        self.assertEqual(str(response.data['email'][0]), 'User with this email address already exists.')
         self.assertEqual(response.status_code, 400)
 
     def test_get_all_user(self):
@@ -155,6 +155,7 @@ class TestUsers(TestSetUp):
                                 "confirm_new_password": "student@123"}
         response = self.client.put('/change-password/', change_password_data)
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data['message'], 'Password changed successfully.')
 
     def test_change_user_password_fail_field_required(self):
         """test to change user password"""

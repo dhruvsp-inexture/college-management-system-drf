@@ -1,4 +1,6 @@
-from rest_framework import viewsets,generics
+from rest_framework import viewsets, generics, status
+from rest_framework.response import Response
+
 from .models import MyUser
 from .serializers import UserCreateSerializer, UserUpdateSerializer, ChangePasswordSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -27,3 +29,9 @@ class UserChangePasswordView(generics.UpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+    def put(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"message": "Password changed successfully."})
