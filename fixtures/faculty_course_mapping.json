@@ -1,1 +1,26 @@
-[{"model": "admin_user.facultycoursemapping", "pk": 3, "fields": {"faculty": 5, "course": 1}}, {"model": "admin_user.facultycoursemapping", "pk": 4, "fields": {"faculty": 12, "course": 1}}, {"model": "admin_user.facultycoursemapping", "pk": 6, "fields": {"faculty": 12, "course": 3}}]
+[
+  {
+    "model": "admin_user.facultycoursemapping",
+    "pk": 3,
+    "fields": {
+      "faculty": 5,
+      "course": 1
+    }
+  },
+  {
+    "model": "admin_user.facultycoursemapping",
+    "pk": 4,
+    "fields": {
+      "faculty": 12,
+      "course": 1
+    }
+  },
+  {
+    "model": "admin_user.facultycoursemapping",
+    "pk": 6,
+    "fields": {
+      "faculty": 12,
+      "course": 3
+    }
+  }
+]
