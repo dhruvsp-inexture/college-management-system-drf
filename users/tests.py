@@ -158,7 +158,7 @@ class TestUsers(TestSetUp):
         self.assertEqual(response.data['message'], 'Password changed successfully.')
 
     def test_change_user_password_fail_field_required(self):
-        """test to change user password"""
+        """test to change user password when confirm new password field is not provided"""
         self.get_logged_in_student()
         change_password_data = {"current_password": "pass@123", "new_password": "student@123"}
         response = self.client.put('/change-password/', change_password_data)

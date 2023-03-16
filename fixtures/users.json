@@ -1,0 +1,130 @@
+[
+  {
+    "model": "users.myuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$WPvmABF2dWnzluGf8FpehR$NA5aqxUL2x8a2iBkIPtphV08u4BEKZtZwms2cG2kd3I=",
+      "last_login": "2023-03-01T12:28:05.893Z",
+      "email": "admin@gmail.com",
+      "first_name": null,
+      "last_name": null,
+      "address": null,
+      "user_type": "A",
+      "phone_number": null,
+      "is_active": true,
+      "is_admin": true
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$7y1XNvsVDLF1NLgamUpl1d$4/CNAH5ogHsnr9z+4caGscK+VJbKzh1kS80H/vtQRYg=",
+      "last_login": null,
+      "email": "student@gmail.com",
+      "first_name": "testyy",
+      "last_name": "usery",
+      "address": "dont knowww",
+      "user_type": "S",
+      "phone_number": "+919394939379",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$NdmQgPbQcJRbffeZFcz8Ja$49dHyit8qHTgwN9kt7O1vxGcUH8FDrDwHf96bsqPiNw=",
+      "last_login": null,
+      "email": "abcde@gmail.com",
+      "first_name": "testyy",
+      "last_name": "usery",
+      "address": "dont knowww",
+      "user_type": "F",
+      "phone_number": "+919394939349",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 6,
+    "fields": {
+      "password": "pass@123",
+      "last_login": null,
+      "email": "cufo@mailinator.com",
+      "first_name": "Susany",
+      "last_name": "Kelley",
+      "address": "Qui numquam quos nob",
+      "user_type": "A",
+      "phone_number": "+918661443198",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$Tooyeuzy7IjMs0lLF1ybo2$UwCjMWlM8HPN/C+2UDU0DB1kbZXkR7oBJaQA+DSIylA=",
+      "last_login": null,
+      "email": "abce@gmail.com",
+      "first_name": null,
+      "last_name": null,
+      "address": null,
+      "user_type": "S",
+      "phone_number": "",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$ZSN4WVGVhmHhO7jARjFM1P$ju9GlbC4QACqGPLhuMsSvGQLIymKcO0t/wweQcJL30A=",
+      "last_login": null,
+      "email": "user@gmail.com",
+      "first_name": "test",
+      "last_name": "user",
+      "address": "dont know",
+      "user_type": "S",
+      "phone_number": "+919393939349",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$rHim0Y4sEhYhAUto7cF6Xu$EILVhuBS+uOCbX93dt3Q2WbqQBe9Cf59xXVpAj5sU50=",
+      "last_login": null,
+      "email": "dhruvsunilbhai@inexture.com",
+      "first_name": "test",
+      "last_name": "user",
+      "address": "dont know",
+      "user_type": "A",
+      "phone_number": "+919393939349",
+      "is_active": true,
+      "is_admin": false
+    }
+  },
+  {
+    "model": "users.myuser",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$Bd28Pz2yY7cdFvYcw2NH8F$LvLm/pUY89sFd/8ZvEqJAi7ek5T3nj1dDo6eBIPY0UY=",
+      "last_login": null,
+      "email": "faculty@gmail.com",
+      "first_name": "test",
+      "last_name": "user",
+      "address": "dont know",
+      "user_type": "F",
+      "phone_number": "+919393939349",
+      "is_active": true,
+      "is_admin": false
+    }
+  }
+]
