@@ -8,3 +8,6 @@ class Course(models.Model):
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+

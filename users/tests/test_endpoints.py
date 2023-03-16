@@ -1,9 +1,4 @@
 from django_rest_passwordreset.models import ResetPasswordToken
-from rest_framework import status
-from rest_framework.authtoken.models import Token
-
-from users.models import MyUser
-
 
 class TestUsers:
 
