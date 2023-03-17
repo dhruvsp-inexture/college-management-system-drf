@@ -14,4 +14,4 @@ class StudentCourseGetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StudentCourseMapping
-        fields = ['id', 'course']
+        fields = ['id', 'course', 'grade']
