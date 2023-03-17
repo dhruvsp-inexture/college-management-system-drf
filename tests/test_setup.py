@@ -32,7 +32,7 @@ class TestSetUp(APITestCase):
             "user_type": "S"
         }
 
-        self.course_data = {"name": "test course", "description": "test description"}
+        self.course_data = {"name": "test course", "description": "test description", "start_date": "2024-03-03"}
 
     def get_logged_in_admin(self):
         """
