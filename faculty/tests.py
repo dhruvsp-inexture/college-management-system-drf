@@ -53,7 +53,7 @@ class TestUsers(TestSetUp):
         response = self.client.put(reverse('grade-student'), grade_student_data)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(str(response.data['error']['non_field_errors'][0]),
-                         'Course has not ended yet. It will end on 2023-06-15. Grade can only be assigned after course has ended.')
+                         'Course has not ended yet. It will end on 2024-06-03. Grade can only be assigned after course has ended.')
 
     def test_grade_student_fail_not_found(self):
         """test to grade student which is not found"""

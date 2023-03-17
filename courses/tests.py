@@ -16,11 +16,11 @@ class TestCourse(TestSetUp):
     def test_add_course_success(self):
         """ test to add course successfully"""
         self.get_logged_in_admin()
-        course_data = {"name": "course 1", "description": "test description", "start_date": "2023-03-15"}
+        course_data = {"name": "course 1", "description": "test description", "start_date": "2024-03-15"}
         response = self.client.post(reverse('course-list'), course_data)
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data["name"], "course 1")
-        self.assertEqual(response.data["end_date"], '2023-06-15')
+        self.assertEqual(response.data["end_date"], '2024-06-15')
 
     def test_add_course_fail_course_exists(self):
         self.add_course()
@@ -76,7 +76,7 @@ class TestCourse(TestSetUp):
     def test_update_course_fail_invalid_start_date(self):
         """test to update a course with invalid start date"""
         self.add_course()
-        self.course_data['start_date'] = '2023-07-01'
+        self.course_data['start_date'] = '2025-07-01'
         response = self.client.put('/course/1/', self.course_data)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(str(response.data[0]), 'Start Date should be before End Date!')
