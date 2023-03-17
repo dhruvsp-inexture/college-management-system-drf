@@ -42,7 +42,7 @@ class TestStudent:
         drop_course_data = {"course": 3}
         response = client.delete('/drop-course/', data=json.dumps(drop_course_data), content_type='application/json')
         assert response.status_code == 204
-        assert response.data['success'] == 'Course dropped'
+        assert response.data['success'] == 'Course Dropped.'
 
     def test_drop_course_fail(self, client, get_logged_in_user, test_student_email, test_student_password):
         """test to drop course fail as course not found"""
