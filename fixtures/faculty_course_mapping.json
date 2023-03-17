@@ -22,5 +22,13 @@
       "faculty": 12,
       "course": 3
     }
+  },
+  {
+    "model": "admin_user.facultycoursemapping",
+    "pk": 7,
+    "fields": {
+      "faculty": 12,
+      "course": 6
+    }
   }
 ]
