@@ -35,6 +35,7 @@ class TestStudent:
         assert len(response.data) == 6
         assert response.data[0]['course']['id'] == 3
         assert response.data[0]['course']['name'] == 'test12345678'
+        assert response.data[0]['grade'] == 'A'
 
     def test_drop_course_success(self, client, get_logged_in_user, test_student_email, test_student_password):
         """test to drop course"""
