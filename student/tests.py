@@ -40,7 +40,7 @@ class TestStudent(TestSetUp):
         drop_course_data = {"course": 1}
         response = self.client.delete(reverse('drop-course'), data=json.dumps(drop_course_data), content_type='application/json')
         self.assertEqual(response.status_code, 204)
-        self.assertEqual(response.data['error'], 'Successfully deleted')
+        self.assertEqual(response.data['success'], 'Course dropped')
 
     def test_drop_course_fail(self):
         self.test_enroll_course_success()

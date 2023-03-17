@@ -55,6 +55,6 @@ class DropCourseView(APIView):
             return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
         enrolled_course.delete()
-        data = {"error": "Successfully deleted", "status_code": 204}
+        data = {"success": "Course dropped", "status_code": 204}
         return Response(data=data, status=status.HTTP_204_NO_CONTENT)
 
