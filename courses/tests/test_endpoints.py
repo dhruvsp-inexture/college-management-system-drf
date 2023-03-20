@@ -45,6 +45,15 @@ class TestCourses:
         assert response.status_code == 400
         assert str(response.data['non_field_errors'][0]) == "End Date should be after Start Date!"
 
+    def test_add_course_fail_invalid_price(self, client, load_initial_data, test_admin_email, test_admin_password,
+                                                get_logged_in_user):
+        """test for adding course with invalid price"""
+        get_logged_in_user(test_admin_email, test_admin_password)
+        course_data = {"name": "new course", "description": "test description", "start_date": "2023-05-05", "end_date": "2023-05-01", "price": -100}
+        response = client.post('/course/', course_data)
+        assert response.status_code == 400
+        assert str(response.data['price'][0]) == 'Ensure this value is greater than or equal to 0.'
+
     def test_get_a_course(self, client, load_initial_data, test_admin_email, test_admin_password,
                                                 get_logged_in_user):
         """test to get a single course details"""
@@ -81,6 +90,15 @@ class TestCourses:
         response = client.patch('/course/1/', update_course_data)
         assert response.status_code == 400
         assert str(response.data[0]) == 'Start Date should be before End Date!'
+
+    def test_update_course_fail_invalid_price(self, client, load_initial_data, test_admin_email, test_admin_password,
+                                                get_logged_in_user):
+        """test to update a course with invalid price"""
+        get_logged_in_user(test_admin_email, test_admin_password)
+        update_course_data = {"price": "abc"}
+        response = client.patch('/course/1/', update_course_data)
+        assert response.status_code == 400
+        assert str(response.data['price'][0]) == 'A valid number is required.'
 
     def test_delete_course(self, client, load_initial_data, test_admin_email, test_admin_password,
                                                 get_logged_in_user):
