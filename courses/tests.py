@@ -46,6 +46,13 @@ class TestCourse(TestSetUp):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(str(response.data['non_field_errors'][0]), "End Date should be after Start Date!")
 
+    def test_add_course_fail_invalid_price(self):
+        self.get_logged_in_admin()
+        self.course_data['price'] = -1
+        response = self.client.post(reverse('course-list'), self.course_data)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(str(response.data['price'][0]), 'Ensure this value is greater than or equal to 0.')
+
     def test_get_a_course(self):
         """test to get a single course details"""
 
@@ -80,6 +87,14 @@ class TestCourse(TestSetUp):
         response = self.client.put('/course/1/', self.course_data)
         self.assertEqual(response.status_code, 400)
         self.assertEqual(str(response.data[0]), 'Start Date should be before End Date!')
+
+    def test_update_course_fail_invalid_price(self):
+        """test to update a course with invalid start date"""
+        self.add_course()
+        self.course_data['price'] = "abc"
+        response = self.client.put('/course/1/', self.course_data)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(str(response.data['price'][0]), 'A valid number is required.')
 
     def test_delete_course(self):
         """test to delete course"""
