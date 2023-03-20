@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 class CourseSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(default=date.today())
+    price = serializers.DecimalField(min_value=0, max_digits=5, decimal_places=2, required=False)
 
     class Meta:
         model = Course
@@ -45,6 +46,7 @@ class CourseSerializer(serializers.ModelSerializer):
         instance.description = validated_data.get('description', instance.description)
         instance.start_date = start_date or instance.start_date
         instance.end_date = end_date or instance.end_date
+        instance.price = validated_data.get('price', instance.price)
         instance.save()
         return instance
 

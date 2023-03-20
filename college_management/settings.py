@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_rest_passwordreset',
     'admin_user',
     'student',
-    'faculty'
+    'faculty',
+    'stripe'
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,4 @@ EMAIT_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
